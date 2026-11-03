@@ -1,0 +1,7 @@
+{
+  "name": "projeto-ci",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Erro no Lint: Ponto e virgula ausente\" && exit 1"
+  }
+}
