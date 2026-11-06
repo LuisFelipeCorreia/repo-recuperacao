@@ -1,4 +1,4 @@
-﻿name: CI/CD Docker Hub
+﻿name: CI/CD DevSecOps
 
 on:
   push:
@@ -10,6 +10,15 @@ jobs:
     steps:
       - name: Checkout do Código
         uses: actions/checkout@v4
+
+      - name: Scan de Segurança (Trivy)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: "fs"
+          scan-ref: "."
+          format: "table"
+          exit-code: "0"
+          severity: "CRITICAL,HIGH"
 
       - name: Configurar Docker Buildx
         uses: docker/setup-buildx-action@v3
